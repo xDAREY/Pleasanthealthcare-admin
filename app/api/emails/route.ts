@@ -144,7 +144,7 @@ export async function POST(request: Request) {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ from: process.env.EMAIL_FROM, to: [payload.to], subject, html }),
+    body: JSON.stringify({ from: process.env.EMAIL_FROM, to: [payload.to], reply_to: process.env.OFFICE_EMAIL, subject, html }),
   })
 
   if (!res.ok) {
