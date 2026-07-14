@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { Menu, X, LogOut, ExternalLink } from 'lucide-react'
 import { useApp } from '@/app/context'
 import { Toast } from './ui-kit'
+import { createClient } from '@/lib/supabase/client'
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -32,6 +33,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   const isActive = (href: string) => pathname === href
+
+  const handleSignOut = async () => {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    router.push('/login')
+    router.refresh()
+  }
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -91,7 +99,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
             <button
-              onClick={() => router.push('/login')}
+              onClick={handleSignOut}
               className="flex w-full items-center gap-2 rounded-md bg-white/10 px-3 py-2 font-mono text-xs font-semibold text-secondary transition-colors hover:bg-white/20 hover:text-white"
             >
               <LogOut className="h-4 w-4" />
