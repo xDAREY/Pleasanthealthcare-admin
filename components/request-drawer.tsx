@@ -7,7 +7,7 @@ import { useApp } from '@/app/context'
 import { AppointmentSlip, HistoryTimeline } from './ui-kit'
 
 
-const TELEHEALTH_ROOM = 'https://meet.google.com/REPLACE-WITH-REAL-ROOM'
+const TELEHEALTH_ROOM = 'https://meet.google.com/hmm-kwyb-hgs' 
 
 export function RequestDrawer({ requestId, onClose }: { requestId: string | null; onClose: () => void }) {
   const { state, confirmRequest, declineRequest, markCompleted, markNoShow, cancelVisit } = useApp()
@@ -171,7 +171,7 @@ export function RequestDrawer({ requestId, onClose }: { requestId: string | null
                   type="text"
                   value={confirmData.amountText}
                   onChange={(e) => setConfirmData({ ...confirmData, amountText: e.target.value })}
-                  placeholder="$130"
+                  placeholder="Enter amount text (e.g., $100, Free, Insurance covered)"
                   className="mt-1.5 w-full rounded-md border border-border bg-background px-3 py-2 font-mono text-sm text-foreground placeholder-muted-foreground focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/30"
                 />
                 <p className="mt-1 font-mono text-xs text-muted-foreground">Shown in the confirmation email</p>

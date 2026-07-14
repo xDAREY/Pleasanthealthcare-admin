@@ -141,7 +141,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 </h1>
               </div>
             </div>
-            <a
+            {/* <a
               href="https://pleasanthomecare.net"
               target="_blank"
               rel="noopener noreferrer"
@@ -149,7 +149,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             >
               View public site
               <ExternalLink className="h-4 w-4" />
-            </a>
+            </a> */}
           </div>
         </header>
 

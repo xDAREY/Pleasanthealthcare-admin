@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Search } from 'lucide-react'
 import { AppShell } from '@/components/app-shell'
@@ -9,7 +9,7 @@ import { RequestDrawer } from '@/components/request-drawer'
 import { useApp } from '@/app/context'
 import type { RequestStatus } from '@/lib/types'
 
-export default function RequestsPage() {
+function RequestsContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const selectedId = searchParams.get('id')
@@ -138,5 +138,13 @@ export default function RequestsPage() {
       {/* Request Drawer (All screens) */}
       <RequestDrawer requestId={selectedId} onClose={handleCloseDrawer} />
     </AppShell>
+  )
+}
+
+export default function RequestsPage() {
+  return (
+    <Suspense fallback={null}>
+      <RequestsContent />
+    </Suspense>
   )
 }
